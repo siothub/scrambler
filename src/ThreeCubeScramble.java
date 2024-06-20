@@ -3,21 +3,29 @@ import java.awt.*;
 import java.util.Arrays;
 import java.util.Random;
 
-public class ScrambleCode  {
+public class ThreeCubeScramble  {
 
-	ScrambleCode(TextField scrambleSizeField, JLabel finalScrambelLabel) {
+	ThreeCubeScramble(TextField scrambleSizeField, JLabel finalScrambelLabel) {
 
 //		available movements for a 3x3x3 cube
 		String[] moves = {"F", "'F", "2F",
-				"B", "'B", "2B",
-				"L", "'L", "2L",
-				"R", "'R", "2R",
-				"U", "'U", "2U",
-				"D", "'D", "2D",
+						  "B", "'B", "2B",
+						  "L", "'L", "2L",
+						  "R", "'R", "2R",
+						  "U", "'U", "2U",
+						  "D", "'D", "2D",
 		};
 
 //		checking scramble max size
-		int size = Integer.parseInt(scrambleSizeField.getText());
+		String sizeString = scrambleSizeField.getText();
+		int size = 0;
+		//checking null textfield
+		if(sizeString.matches("")) {
+			size = 0;
+		} else {
+			size = Integer.parseInt(sizeString);
+		}
+		//checking edges
 		if (size <= 0 || size > 25) {
 			size = 25;
 		}
